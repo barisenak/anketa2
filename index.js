@@ -1,9 +1,8 @@
 function getAnketa() {
-    
     const surname = getInfo ("Введите фамилию", valid);
     const name = getInfo ("Введите имя", valid);
     const patronymic = getInfo ("Введите отчество", valid);
-    const age = Number(getInfo ("Введите ваш возраст", valid, validAge));
+    const age = getInfo ("Введите ваш возраст", validAge);
     const isMan = confirm("Вы мужчина?");
     let pension = null;
     let sex = isMan ? "мужчина" : "женщина";
@@ -13,18 +12,11 @@ function getAnketa() {
       pension = "не на пенсии";
     };
     
-    function getInfo (text, valid, validAge) {
+    function getInfo (text, valid) {
         let data = prompt(text)
         if (valid(data) === false) {
-            alert ("Строка не заполнена!")
-            getInfo(text,valid)
-        } else {
-            return data;
-        }
-
-        if (validAge(data) === false) {
-            alert ("Вы ввели не числовое значение")
-            getInfo(text,valid,validAge)
+            alert ("Строка заполнена не корректно!")
+            return getInfo(text,valid)
         } else {
             return data;
         }
@@ -39,7 +31,7 @@ function getAnketa() {
     }
 
     function validAge (valueForAge){
-        if (valueForAge === Number) {
+        if (Number(valueForAge)) {
             return true;
         } else {
             return false
@@ -56,4 +48,3 @@ function getAnketa() {
   }
   
   getAnketa()
-  
