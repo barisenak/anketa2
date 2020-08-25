@@ -23,19 +23,11 @@ function getAnketa() {
     }
 
     function valid (value){
-        if (value !== "") {
-            return true;
-        } else {
-            return false
-        }
+        return (value !== "") ? true: false
     }
 
     function validAge (valueForAge){
-        if (Number(valueForAge)) {
-            return true;
-        } else {
-            return false
-        }
+        return Number(valueForAge) ? true: false
     }
 
     alert(`
